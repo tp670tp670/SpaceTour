@@ -36,7 +36,7 @@
 
     <div id="viewer"></div>
     
-    <div class="btn-group-left">
+    <div id="control-bar" class="btn-group-left">
         <button id="gyro-btn" class="ui-btn" onclick="toggleGyro()">🧭 陀螺儀關閉</button>
         <button id="fullscreen-btn" class="ui-btn" onclick="toggleFullscreen()">🖥️ 全螢幕模式</button>
     </div>
@@ -188,6 +188,12 @@
             if (!document.fullscreenElement && !document.webkitFullscreenElement) {
                 btn.innerText = "🖥️ 全螢幕模式"; btn.classList.remove('active');
             }
+        }
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+        document.getElementById('fullscreen-btn').style.display = 'none';
+        } else {
+        document.getElementById('gyro-btn').style.display = 'none';
         }
     </script>
 </body>
